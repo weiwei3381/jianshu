@@ -36,3 +36,23 @@ injectGlobal`
 ### 统一浏览器默认样式
 
 使用[reset.css](https://meyerweb.com/eric/tools/css/reset/)可以统一不同浏览器内核的样式, 典型的例如body的间距在不同浏览器的默认值是不一样的, 为此, 通过`reset.css`可以将所有的默认实现进行统一.
+
+## 头部模块编写
+
+使用`styled`把每个html标签的css样式在js中进行定义, 然后在UI中引用, 就可以当做react组件进行使用了, 示例代码如下:
+
+```javascript
+import logoPic from '../../statics/logo.png';
+
+export const Logo = styled.a.attrs({
+    href: '/'
+})`
+    display: block;
+    width: 100px;
+    height: 56px;
+    background: url(${logoPic});
+    background-size: contain;
+`;
+```
+
+其中图片`logo.png`为了能够正常编译, 保证找到位置, 可以先导入图片, 然后用模板语法加入到js的多行文本中去.
