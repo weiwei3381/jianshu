@@ -1,68 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 利用react开发简书项目实战
 
-## Available Scripts
+## 项目前期工作
 
-In the project directory, you can run:
+### 创建项目
 
-### `npm start`
+利用npm安装脚手架工具`create-react-app`, 然后使用`create-react-app jianshu`快速创建简书开发环境.  
+创建完毕之后, 在github上建立空白项目, 然后使用下面命令进行初次提交:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+# 初始化git
+git init
+# 将远程仓库git@github.com:weiwei3381/jianshu.git的别名设为origin
+git remote add origin git@github.com:weiwei3381/jianshu.git
+# 将master分支推送到远程仓库origin上, 并利用-u指定为默认远程主机, 以后只需要git push就可以默认推送到该位置
+git push -u origin master 
+```
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### css样式管理
+提交之后, 精简项目内容, 值得注意的是, 在`index.js`中引入的css文件, 可以直接在下级组件`App.js`中使用. 更深一步, 只要在一个组件中引入css样式, 则在全局项目中都生效, 但是这样会造成css样式之间产生**耦合**, 不利于样式管理. 可以使用第三方模块`styled-components`管理css样式, 安装方法为:  
+`npm install --save styled-components@3.3.2`  
+需要注意的是, styled-component的v4版本修改了很多api, 例如移除了`injectGlobal`方法, 本项目采用v3版本, 使用`styled-components`管理样式的示例代码如下:
 
-### `npm test`
+```javascript
+import  {injectGlobal}  from 'styled-components';
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+injectGlobal`
+  body {
+    margin: 0;
+    padding: 0;
+    background: green;
+  }
+  `
+```
 
-### `npm run build`
+### 统一浏览器默认样式
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+使用[reset.css](https://meyerweb.com/eric/tools/css/reset/)可以统一不同浏览器内核的样式, 典型的例如body的间距在不同浏览器的默认值是不一样的, 为此, 通过`reset.css`可以将所有的默认实现进行统一.
