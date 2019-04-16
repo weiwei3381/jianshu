@@ -75,3 +75,7 @@ export const NavItem = styled.div`
     }
 `
 ```
+
+## 图标嵌入
+
+使用阿里巴巴的[iconfont](https://www.iconfont.cn/), 登陆账号, 点击进入`图标管理`下面的`我的项目`, 就可以新建项目了. 然后可以按需要在图标库中进行搜索, 找到合适的点击`购物车`按钮, 添加完毕后, 在用户的购物车栏, 可以选择`添加到项目`, 然后在项目中点击`下载到本地`, 可以将图标批量进行下载. 将下载文件夹解压, 其中有个`demo.html`是使用教程. 一般来说, 第一步是使用`iconfont.css`文件, 利用`import  {injectGlobal}  from 'styled-components';`中的`injectGlobal`方法把css内容注入到全局, 然后在项目入口文件`index.js`中引用这个js文件`import './statics/iconfont/iconfont.js'`, 然后在项目中利用`<span className="iconfont">&#xe637;</span>`使用icon即可.

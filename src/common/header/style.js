@@ -88,3 +88,18 @@ export const Button = styled.div`
         background: #ec6149;
     }
 `;
+
+export const SearchWarpper = styled.div`
+    position: relative;
+    float: left;
+
+    .iconfont {
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+        width: 30px;
+        line-height: 30px;
+        border-radius: 15px;
+        text-align: center;
+    }
+`;
