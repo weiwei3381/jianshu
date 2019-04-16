@@ -55,4 +55,23 @@ export const Logo = styled.a.attrs({
 `;
 ```
 
-其中图片`logo.png`为了能够正常编译, 保证找到位置, 可以先导入图片, 然后用模板语法加入到js的多行文本中去.
+其中图片`logo.png`为了能够正常编译, 保证找到位置, 可以先导入图片, 然后用模板语法加入到js的多行文本中去. 如果需要在某个css元素中加入class, 做法通常采用这种写法: `&.className {float: left;}`, 下面代码代表组件`NavItem`中, class为left的css样式为左浮动, class含有active的元素颜色为#ea6f5a;
+
+```javascript
+export const NavItem = styled.div`
+    line-height: 56px;
+    padding: 0 15px;
+    font-size: 17px;
+    color: #333;
+    &.left {
+        float: left;
+    }
+    &.right {
+        float: right;
+        color: #969696;
+    }
+    &.active {
+        color: #ea6f5a;
+    }
+`
+```
